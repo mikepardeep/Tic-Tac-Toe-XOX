@@ -10,9 +10,17 @@ function closePlayerConfig(){
     backdropElement.style.display = 'none';
 }
 
+//define function to savePlayerConfig to store user input and display it when necessary
 function savePlayerConfig(event){
-    event.preventDefault();
-    console.log(event);
+    event.preventDefault(); //prevent default behaviours of sending a request automatically
+    const formData = new FormData(event.target);  //initialize object, form data takes a form and automatically (blueprint) initialize input value (event.target to target HTML)
+    const enteredPlayername = formData.get('playername').trim(); //get() allow to get a value of one of input , trim() will trim white spaces
+    
+    //add data validation condition()
+    if(!enteredPlayername){
+        alert('please input a valid name');
+    }
+
 }
 
 
