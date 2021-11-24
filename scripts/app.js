@@ -14,7 +14,8 @@ const cancelConfigBtnElement = document.getElementById('cancel-config-btn');
 //initialize the constant formElement
 const formElement = document.querySelector('form');
 
-
+//initialize the error output paragraph element
+const errorOutputElement = document.getElementById('config-errors');
 
 //add click eventlistener to Player 1 and Player 2 button.
 editPlayer1BtnElement.addEventListener('click',openPlayerConfig);
