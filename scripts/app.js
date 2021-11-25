@@ -1,3 +1,6 @@
+//set the variable value to 0 as a default since the data for edit player 1 and 2
+let editedPlayer = 0;
+
 //initialize player config overlay
 const playerConfigOverlayElement = document.getElementById('config-overlay');
 

@@ -1,5 +1,6 @@
 //define function to openplayerconfig for edit player button
-function openPlayerConfig(){
+function openPlayerConfig(event){
+    editedPlayer =+ event.target.dataset.playerid;     //+ to convert to number       //To know which button clicked, Access to target which is in this case button
     playerConfigOverlayElement.style.display = 'block';
     backdropElement.style.display = 'block';
 }
@@ -15,14 +16,19 @@ function closePlayerConfig(){
 function savePlayerConfig(event){
     event.preventDefault(); //prevent default behaviours of sending a request automatically
     const formData = new FormData(event.target);  //initialize object, form data takes a form and automatically (blueprint) initialize input value (event.target to target HTML)
-    const enteredPlayername = formData.get('playername').trim(); //get() allow to get a value of one of input , trim() will trim white spaces
-    
+    const enteredPlayername = formData.get('playername').trim(); //get() allow to get a value of input based on id, trim() will trim white spaces
+
+
    //add data validation condition()
     if(!enteredPlayername){
         event.target.firstElementChild.classList.add('error');
         errorOutputElement.textContent = 'Please enter a valid name!';
         return;
-    };
+    }
+
+    const updatedPlayerDataElement = document.getElementById('player-' + editedPlayer + '-data'); //insert dynamic edited player to select dynamically
+    updatedPlayerDataElement.children[1].textContent = enteredPlayername;  // h3 player since it is 2nd child
+    console.log(updatedPlayerDataElement);
 }
 
 
