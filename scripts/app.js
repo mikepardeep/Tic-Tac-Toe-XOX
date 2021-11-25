@@ -1,6 +1,9 @@
 //set the variable value to 0 as a default since the data for edit player 1 and 2
 let editedPlayer = 0;
 
+//set initial activePlayer value to 0
+let activePlayer = 0;
+
 //store the player name data in javascript object itself
 const players = [
     {
@@ -39,6 +42,9 @@ const startNewGameBtnElement = document.getElementById('start-game-btn');
 //initialize game Element area
 const gameAreaElement = document.getElementById('active-game');
 
+//initialize the list of xox
+const gameFieldElements = document.querySelectorAll('#game-board li');
+
 //add click eventlistener to Player 1 and Player 2 button.
 editPlayer1BtnElement.addEventListener('click',openPlayerConfig);
 editPlayer2BtnElement.addEventListener('click',openPlayerConfig);
@@ -52,3 +58,10 @@ formElement.addEventListener('submit',savePlayerConfig);
 
 //add eventListener to startGame button
 startNewGameBtnElement.addEventListener('click',startNewGame);
+
+//add eventListener to gameList xox using for of (array) loop since we need to select 9 li
+
+for(const gameFieldElement of gameFieldElements) {
+    gameFieldElement.addEventListener('click',selectGameField); 
+    console.gameFieldElements;
+}

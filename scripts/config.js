@@ -3,7 +3,6 @@ function openPlayerConfig(event){
     editedPlayer =+ event.target.dataset.playerid;     //+ to convert to number       //To know which button clicked, Access to target which is in this case button
     playerConfigOverlayElement.style.display = 'block';
     backdropElement.style.display = 'block';
-    console.log(editedPlayer);
 }
 
 //define function to closeplayerconfig for edit player button
@@ -21,7 +20,6 @@ function savePlayerConfig(event){
     const formData = new FormData(event.target);  //initialize object, form data takes a form and automatically (blueprint) initialize input value (event.target to target HTML)
     const enteredPlayername = formData.get('playername').trim(); //get() allow to get a value of input based on id, trim() will trim white spaces
 
-
    //add data validation condition()
     if(!enteredPlayername){
         event.target.firstElementChild.classList.add('error');
@@ -36,7 +34,6 @@ function savePlayerConfig(event){
     players[editedPlayer-1].name = enteredPlayername;
 
     closePlayerConfig();
-
 }
 
 
