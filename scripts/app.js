@@ -1,8 +1,21 @@
+//Store Game Data from Players 
+const gameData = [
+    [0,0,0],
+    [0,0,0],
+    [0,0,0],
+];
+
 //set the variable value to 0 as a default since the data for edit player 1 and 2
 let editedPlayer = 0;
 
 //set initial activePlayer value to 0
 let activePlayer = 0;
+
+//set current Player value to 
+let currentPlayer = 0;
+
+//set current Round value to
+let currentRound = 1;
 
 //store the player name data in javascript object itself
 const players = [
@@ -44,6 +57,15 @@ const gameAreaElement = document.getElementById('active-game');
 
 //initialize the list of xox
 const gameFieldElements = document.querySelectorAll('#game-board li');
+
+//initalizze the game board
+const gameBoardElement = document.getElementById('game-board');
+
+//initialize activeplayer name
+const activePlayerNameElement = document.getElementById('active-player-name');
+
+//initialize gameOverElement
+const gameOverElement = document.getElementById('game-over');
 
 //add click eventlistener to Player 1 and Player 2 button.
 editPlayer1BtnElement.addEventListener('click',openPlayerConfig);
