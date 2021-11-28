@@ -1,9 +1,32 @@
+function resetGameStatus() {
+    activePlayer = 0;
+    currentRound = 1;
+    gameIsOver = false;
+    gameOverElement.firstElementChild.innerHTML = 
+    'You Won, <span id="winner-name">PLAYER NAME</span>!';
+    gameOverElement.style.display = 'none';
+
+    let gameBoardIndex = 0;
+    for(let i=0; i<3; i++){
+      for(let j=0; j<3; j++) {
+          gameData[i][j] = 0 ;
+          const gameBoardItemElement = gameBoardElement.children[gameBoardIndex];
+          gameBoardItemElement.textContent ='';
+          gameBoardItemElement.classList.remove('disabled');
+          gameBoardIndex++;
+      }
+    }
+}
+
 function startNewGame() {
 
     if(players[0].name =='' || players[1].name ==''){
     alert('Please do set custom names for both Player 1 and Player 2');
     return; //return before this code wont execute after this
     } 
+
+    resetGameStatus();
+
     activePlayerNameElement.textContent = players[activePlayer].name;
     gameAreaElement.style.display = 'block';
     
@@ -22,7 +45,10 @@ function switchPlayer() {
 
 //access to the Gamefield which the event clicked
 function selectGameField(event) {
-   
+    if(gameIsOver) {
+        return;
+    }
+
     const selectedField = event.target;
     const selectedColumn = selectedField.dataset.col-1; //access the column list
     const selectedRow = selectedField.dataset.row-1;  //access the Row List //arrray indexes should star 0
@@ -94,6 +120,7 @@ function checkForGameOver(){
 }
 
 function endGame(winnerId) {
+    gameIsOver = true;
     gameOverElement.style.display = 'block';
 
     if(winnerId>0){
